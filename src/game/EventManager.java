@@ -13,7 +13,8 @@ public class EventManager {
     /**
      * Creates the collection of events used during the semester.
      */
-    public EventManager() {
+    public EventManager() 
+    {
         events = new ArrayList<Event>();
 
         // Placeholder events for testing — replace with real content
@@ -38,9 +39,11 @@ public class EventManager {
      * @param week the current semester week
      * @return the matching Event, or null if the week is invalid
      */
-    public Event getCurrentEvent(int week) {
+    public Event getCurrentEvent(int week) 
+    {
         int index = week - 1;
-        if (index < 0 || index >= events.size()) {
+        if (index < 0 || index >= events.size()) 
+        {
             return null;
         }
         return events.get(index);
@@ -51,21 +54,8 @@ public class EventManager {
      *
      * @return the number of events
      */
-    public int getEventCount() {
+    public int getEventCount() 
+    {
         return events.size();
-    }
-
-    /**
-     * Quick manual test of EventManager's behavior.
-     *
-     * @param args unused
-     */
-    public static void main(String[] args) {
-        EventManager em = new EventManager();
-        System.out.println("Event count: " + em.getEventCount());
-        System.out.println("Week 1: " + em.getCurrentEvent(1).getPrompt());
-        System.out.println("Week 2: " + em.getCurrentEvent(2).getPrompt());
-        System.out.println("Invalid week (0): " + em.getCurrentEvent(0));
-        System.out.println("Invalid week (99): " + em.getCurrentEvent(99));
     }
 }
