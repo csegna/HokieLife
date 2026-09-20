@@ -2,41 +2,49 @@ package game;
 
 import java.util.ArrayList;
 
+// -------------------------------------------------------------------------
 /**
- * Represents one weekly situation, with a prompt and available choices.
- * Placeholder implementation — Eyal owns the real version.
+ * Represents an event in the game.
+ * 
+ * @author Corbin
+ * @version 2026.09.14
  */
 public class Event {
-    //~ Fields ................................................................
+
     private String prompt;
     private ArrayList<Choice> choices;
 
-    //~ Constructors ..........................................................
+    // ----------------------------------------------------------
     /**
-     * Creates an event with a situation prompt and its choices.
-     *
-     * @param prompt the situation text shown to the player
-     * @param choices the available choices for this event
+     * Create a new Event object.
+     * 
+     * @param prompt
+     *            the event prompt.
+     * @param choices
+     *            the choices for the event.
      */
     public Event(String prompt, ArrayList<Choice> choices) {
         this.prompt = prompt;
         this.choices = choices;
     }
 
-    //~ Public Methods ........................................................
+
+    // ----------------------------------------------------------
     /**
-     * Returns the event's prompt text.
-     *
-     * @return the situation text
+     * Gets the text of the prompt.
+     * 
+     * @return the text of the prompt.
      */
     public String getPrompt() {
         return prompt;
     }
 
+
+    // ----------------------------------------------------------
     /**
-     * Returns the list of choices for this event.
-     *
-     * @return the available choices
+     * Gets the choices for the prompt.
+     * 
+     * @return the choices for the prompt.
      */
     public ArrayList<Choice> getChoices() {
         return choices;
