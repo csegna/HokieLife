@@ -1,26 +1,37 @@
 package game;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+// -------------------------------------------------------------------------
 /**
  * Test class for Player
  *
  * @author Ashwin
  * @version 2026.09.14
  */
-public class PlayerTest extends student.TestCase {
+public class PlayerTest {
+
     private Player player;
 
+    // ----------------------------------------------------------
     /**
      * Set up for all test methods. Runs before every test.
      */
+    @BeforeEach
     public void setUp() {
         player = new Player();
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for the constructor. A new player should start on
      * week 1 with all stats at 100.
      */
+    @Test
     public void testConstructor() {
         assertEquals(1, player.getWeek());
         assertEquals(100, player.getHappiness());
@@ -29,10 +40,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when the resulting stats stay inside
      * the 0-100 range and no clamping should occur.
      */
+    @Test
     public void testApplyChoiceWithinRange() {
         player.setHappiness(50);
         player.setMotivation(50);
@@ -47,10 +60,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when happiness would go above 100.
      * It should be clamped at 100.
      */
+    @Test
     public void testApplyChoiceHappinessClampedAtMax() {
         Choice choice = new Choice("Great news", 50, -5, -5);
         player.applyChoice(choice);
@@ -61,10 +76,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when motivation would go above 100.
      * It should be clamped at 100.
      */
+    @Test
     public void testApplyChoiceMotivationClampedAtMax() {
         Choice choice = new Choice("Pep talk", -5, 50, -5);
         player.applyChoice(choice);
@@ -75,10 +92,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when academic performance would go
      * above 100. It should be clamped at 100.
      */
+    @Test
     public void testApplyChoiceAcademicPerformanceClampedAtMax() {
         Choice choice = new Choice("Aced the test", -5, -5, 50);
         player.applyChoice(choice);
@@ -89,10 +108,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when happiness would go below 0.
      * It should be clamped at 0.
      */
+    @Test
     public void testApplyChoiceHappinessClampedAtMin() {
         Choice choice = new Choice("Terrible week", -150, -5, -5);
         player.applyChoice(choice);
@@ -103,10 +124,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when motivation would go below 0.
      * It should be clamped at 0.
      */
+    @Test
     public void testApplyChoiceMotivationClampedAtMin() {
         Choice choice = new Choice("Rough week", -5, -150, -5);
         player.applyChoice(choice);
@@ -117,10 +140,12 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for applyChoice when academic performance would go
      * below 0. It should be clamped at 0.
      */
+    @Test
     public void testApplyChoiceAcademicPerformanceClampedAtMin() {
         Choice choice = new Choice("Failed the test", -5, -5, -150);
         player.applyChoice(choice);
@@ -131,18 +156,22 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for getWeek and setWeek.
      */
+    @Test
     public void testGetAndSetWeek() {
         player.setWeek(7);
         assertEquals(7, player.getWeek());
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for advanceWeek. Week should increase by exactly one.
      */
+    @Test
     public void testAdvanceWeek() {
         player.setWeek(4);
         player.advanceWeek();
@@ -150,27 +179,33 @@ public class PlayerTest extends student.TestCase {
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for getHappiness and setHappiness.
      */
+    @Test
     public void testGetAndSetHappiness() {
         player.setHappiness(42);
         assertEquals(42, player.getHappiness());
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for getMotivation and setMotivation.
      */
+    @Test
     public void testGetAndSetMotivation() {
         player.setMotivation(37);
         assertEquals(37, player.getMotivation());
     }
 
 
+    // ----------------------------------------------------------
     /**
      * Test method for getAcademicPerformance and setAcademicPerformance.
      */
+    @Test
     public void testGetAndSetAcademicPerformance() {
         player.setAcademicPerformance(63);
         assertEquals(63, player.getAcademicPerformance());
